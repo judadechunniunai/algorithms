@@ -7,7 +7,7 @@ public class Sort {
 
         Integer[] arr = {1, 5, 9, 2, 4, 7, 3, 4, 5, 6, 2, 1, 10};
 //        selectSort(arr);
-        bubbleSort(arr);
+        insertionSort(arr);
         System.out.println(Arrays.toString(arr));
     }
 
@@ -54,6 +54,33 @@ public class Sort {
                  * 写成j < arr.length - 1也可以 必须要-1 因为j+1 在边缘会索引越界
                  */
                 exchange(arr, j, j + 1);
+            }
+
+        }
+    }
+
+    /**
+     * 插入排序
+     * 垃圾排序里面最好的了
+     *
+     * @param arr
+     */
+    public static void insertionSort(Integer[] arr) {
+        if (arr == null || arr.length <= 1) {
+            return;
+        }
+        //插入 遍历到的视为新插入的 要与前边的每一个数进行比较 插入到合适的位置
+        //第一个数 是不用比较的 所以从1开始
+        for (int i = 1; i < arr.length; i++) {
+            //外层指定初始比较位置
+            for (int j = i; j > 0; j--) {
+                /**
+                 * 插入的概念是 前面的数小于自己 后面的数大于自己
+                 * 从后往前比 一直比较到前面没数了为止
+                 *只要前面的数比自己大 就换位置
+                 *
+                 */
+                exchange(arr, j - 1, j);
             }
 
         }
